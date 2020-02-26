@@ -3,7 +3,6 @@ package com.example.firebasetest;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.example.firebasetest.firebase.AccountManager;
@@ -26,13 +25,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         DatabaseReference myRef = database.getReference("picture/pic_1");
-        //myRef.setValue("Please work");
+        myRef.setValue("Please work");
 
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 text = dataSnapshot.getValue(String.class);
-                System.out.println(text);
+                Toast.makeText(getApplicationContext(),text,Toast.LENGTH_LONG).show();
             }
 
             @Override
